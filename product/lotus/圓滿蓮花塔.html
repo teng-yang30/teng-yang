@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+   全台配送－圓滿蓮花塔｜騰揚開發國際
+  </title>
+<meta name="description"
+content="騰揚開發國際提供蓮花塔、喪禮蓮花塔、告別式蓮花塔全台配送服務，象徵功德圓滿、一路生蓮。">
+<link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
+<style>
+   :root {
+  --gold:#a87518;
+  --dark:#222;
+  --muted:#666;
+  --line:#e8e0d2;
+  --cream:#fbf7ef;
+  --green:#2f5f42;
+  --footer:#1f1f1f;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Noto Sans TC', '微軟正黑體', sans-serif;
+    color: #1f3d2f;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,0.78),
+            rgba(255,255,255,0.72)
+        ),
+        url("https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/New%20%E9%A8%B0%E6%8F%9A%E5%9C%96%E7%89%87/%E8%83%8C%E6%99%AF.jpg")
+        center center / 100% 100% no-repeat scroll;
+}
+
+a {
+  text-decoration:none;
+  color:inherit;
+}
+
+img {
+  max-width:100%;
+  display:block;
+}
+
+.float {
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:9999;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  align-items:center;
+}
+
+.float-items {
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  opacity:0;
+  transform:translateY(10px);
+  pointer-events:none;
+  transition:.25s;
+}
+
+.float.open .float-items {
+  opacity:1;
+  transform:translateY(0);
+  pointer-events:auto;
+}
+
+.float a,.float button {
+  width:66px;
+  height:66px;
+  border-radius:20px;
+  border:0;
+  color:#fff;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 12px 28px #0004;
+  cursor:pointer;
+}
+
+.line {
+  background:#06c755;
+}
+
+.ig {
+  background:linear-gradient(135deg,#ff8a00,#e52e71,#6a5cff);
+}
+
+.fb {
+  background:#1877f2;
+}
+
+.tel {
+  background:#333;
+}
+
+.topbtn {
+  background:#7b7167;
+}
+
+.toggle {
+  background:#333;
+  font-size:28px;
+}
+
+header {
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#fff;
+  box-shadow:0 3px 14px #0002;
+}
+
+.head {
+  max-width:1220px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  gap:24px;
+  padding:14px 18px;
+}
+
+.desktop-logo {
+    width:210px;
+    display:block;
+}
+
+.mobile-logo {
+    display:none;
+}
+
+.menu-btn {
+  display:none;
+  margin-left:auto;
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:8px;
+  padding:9px 12px;
+  font-size:20px;
+}
+
+.nav {
+  display:flex;
+  gap:4px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.nav>li {
+  list-style:none;
+  position:relative;
+}
+
+.nav a {
+  display:block;
+  padding:9px 10px;
+  font-weight:600;
+  color:#555;
+  font-size:15px;
+}
+
+.nav a:hover {
+  color:var(--gold);
+}
+
+.sub {
+  position:absolute;
+  left:50%;
+  top:100%;
+  transform:translateX(-50%);
+  background:#1e5139;
+  min-width:230px;
+  border-radius:4px;
+  padding:8px 0;
+  box-shadow:0 12px 28px #0003;
+  opacity:0;
+  visibility:hidden;
+}
+
+.nav li:hover .sub {
+  opacity:1;
+  visibility:visible;
+}
+
+.sub a {
+  color:#fff;
+  padding:8px 15px;
+}
+
+.sub a:hover {
+  background:#ffffff18;
+  color:#fff;
+}
+
+.container {
+  max-width:1180px;
+  margin:auto;
+  padding:36px 18px;
+}
+
+.breadcrumb {
+  font-size:14px;
+  color:#777;
+  margin:14px 0 28px;
+}
+
+.breadcrumb a {
+  color:#777;
+}
+
+.product {
+  display:grid;
+  grid-template-columns:52% 48%;
+  gap:34px;
+  align-items:start;
+}
+
+.gallery {
+  display:grid;
+  grid-template-columns:90px 1fr;
+  gap:14px;
+}
+
+.thumbs {
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.thumbs img {
+  border:1px solid var(--line);
+  cursor:pointer;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  padding:3px;
+  background:#fff;
+}
+
+.thumbs img.active {
+  border:2px solid var(--gold);
+}
+
+.main-img {
+  border:1px solid var(--line);
+  background:#fafafa;
+  padding:6px;
+}
+
+.main-img img {
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+}
+
+.summary h1 {
+  font-size:30px;
+  line-height:1.35;
+  margin:0 0 15px;
+  font-weight:700;
+}
+
+.price {
+  font-size:25px;
+  color:#8d5a00;
+  font-weight:700;
+  margin:0 0 18px;
+}
+
+.notice {
+  color:#555;
+  margin-bottom:18px;
+}
+
+.notice p {
+  margin:7px 0;
+}
+
+.order {
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  background:#06c755;
+  color:white;
+  font-weight:800;
+  border-radius:3px;
+  padding:12px 22px;
+  margin:12px 0 22px;
+}
+
+.meta {
+  font-size:14px;
+  color:#666;
+  border-top:1px solid var(--line);
+  padding-top:15px;
+}
+
+.meta a {
+  color:#8d5a00;
+}
+
+.tabs {
+  margin-top:46px;
+  border-top:1px solid var(--line);
+}
+
+.tab-title {
+  display:inline-block;
+  padding:13px 22px;
+  border-top:3px solid var(--gold);
+  font-weight:700;
+  background:#fff;
+}
+
+.desc {
+  padding:24px 0 10px;
+}
+
+.desc h2 {
+  font-size:26px;
+  margin:0 0 8px;
+}
+
+.desc h3 {
+  font-size:21px;
+  margin:28px 0 8px;
+}
+
+.desc ul,.desc ol {
+  padding-left:24px;
+}
+
+.quote {
+  border-left:4px solid var(--gold);
+  background:var(--cream);
+  padding:14px 18px;
+  margin:18px 0;
+  color:#5b4a2e;
+}
+
+.info-table {
+  width:100%;
+  border-collapse:collapse;
+  margin:16px 0;
+}
+
+.info-table th,.info-table td {
+  border:1px solid var(--line);
+  padding:11px 14px;
+  text-align:left;
+}
+
+.info-table th {
+  background:var(--cream);
+  width:160px;
+}
+
+.related {
+  margin-top:42px;
+}
+
+.related h2 {
+  font-size:26px;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+}
+
+.card {
+  border:1px solid var(--line);
+  background:#fff;
+  text-align:center;
+  padding-bottom:16px;
+  transition:.2s;
+}
+
+.card:hover {
+  box-shadow:0 12px 28px #0002;
+  transform:translateY(-3px);
+}
+
+.card img {
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+}
+
+.card h3 {
+  font-size:16px;
+  line-height:1.45;
+  min-height:48px;
+  padding:0 10px;
+}
+
+.card .p {
+  color:#8d5a00;
+  font-weight:700;
+}
+
+.card .btn {
+  display:inline-block;
+  background:#06c755;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:3px;
+  font-weight:700;
+  margin-top:8px;
+}
+
+.site-footer {
+  margin-top:40px;
+}
+
+.footer-main {
+  display:grid;
+  grid-template-columns:1.1fr 1fr 1fr;
+  gap:28px;
+  align-items:center;
+  background:#f8f8f8;
+  padding:42px max(18px,calc((100vw - 1180px)/2));
+}
+
+.footer-main img {
+  width:310px;
+  margin:auto;
+}
+
+.footer-main h3 {
+  color:var(--gold);
+  letter-spacing:.08em;
+}
+
+.footer-main a {
+  display:block;
+  color:#0875d1;
+  font-weight:700;
+  margin:4px 0;
+}
+
+.copy {
+  background:#222;
+  color:#fff;
+  text-align:center;
+  padding:14px;
+}
+
+@media(max-width:800px) {
+  .head {
+    justify-content:space-between;
+  }
+
+  .desktop-logo {
+      display:none;
+  }
+
+  .mobile-logo {
+      display:block;
+      width:280px;
+      height:auto;
+      margin:auto;
+  }
+
+  .menu-btn {
+    display:block;
+  }
+
+  .nav {
+    position:fixed;
+    inset:70px 0 auto 0;
+    background:#fff;
+    display:none;
+    box-shadow:0 10px 30px #0002;
+    padding:10px 18px;
+  }
+
+  .nav.open {
+    display:block;
+  }
+
+  .nav>li {
+    border-bottom:1px solid #eee;
+  }
+
+  .sub {
+    position:static;
+    transform:none;
+    opacity:1;
+    visibility:visible;
+    box-shadow:none;
+    border-radius:0;
+    display:none;
+  }
+
+  .nav li.open .sub {
+    display:block;
+  }
+
+  .product {
+    grid-template-columns:1fr;
+  }
+
+  .gallery {
+    grid-template-columns:1fr;
+  }
+
+  .thumbs {
+    flex-direction:row;
+    order:2;
+  }
+
+  .thumbs img {
+    width:72px;
+  }
+
+  .grid {
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .footer-main {
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .float a,.float button {
+    width:58px;
+    height:58px;
+  }
+
+  .summary h1 {
+    font-size:25px;
+  }
+
+}
+  
+
+/* ===== 參照 page_01.html：置頂窗口 ===== */
+header.simple-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 0.9rem 1rem;
+    background: rgb(255, 255, 255);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.16);
+}
+
+.simple-header img {
+    width: 210px;
+    height: auto;
+}
+
+.simple-header nav {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-weight: 800;
+    color: #4d4d4d;
+}
+
+.simple-header nav a:hover {
+    color: #a17312;
+}
+
+/* ===== 參照 page_01.html：底部 ===== */
+.site-footer {
+    margin-top: 3rem;
+    background: rgba(255,255,255,0.94);
+    text-align: center;
+}
+
+.footer-main {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    padding: 3rem 1rem;
+    max-width: 1180px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.94);
+}
+
+.footer-main img {
+    width: min(320px, 82%);
+    margin: 0 auto;
+}
+
+.footer-main h3 {
+    color: #9a6a20;
+}
+
+.footer-main a {
+    display: block;
+    color: #0074e8;
+    font-weight: 800;
+    line-height: 2;
+}
+
+.footer-bottom {
+    background: rgba(31,31,31,0.94);
+    color: #fff;
+    padding: .85rem;
+    letter-spacing: .08em;
+    text-align: center;
+}
+
+@media(max-width:740px) {
+    .simple-header {
+        gap: .8rem;
+        flex-direction: column;
+    }
+
+    .simple-header img {
+        width: 220px;
+    }
+
+    .footer-main {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body id="top">
+<div class="float" id="float">
+<div class="float-items">
+<a class="line" href="https://line.me/ti/p/~restore1101" target="_blank">
+     LINE
+    </a>
+<a class="ig" href="https://www.instagram.com/tenyoung_1757?igsh=MTcwOXE1OHg1dmlzeg==" target="_blank">
+     IG
+    </a>
+<a class="fb" href="https://www.facebook.com/share/1EW33SD2rF/?mibextid=wwXIfr" target="_blank">
+     f
+    </a>
+<a class="topbtn" href="#top">
+     ⌂
+    </a>
+</div>
+<button class="toggle" id="toggle">
+    ☰
+   </button>
+</div>
+<header class="simple-header">
+<a href="https://teng-yang30.github.io/teng-yang/index">
+<img alt="騰揚開發國際" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/New%20%E9%A8%B0%E6%8F%9A%E5%9C%96%E7%89%87/Logo%20(1).jpg"/>
+</a>
+<nav>
+<a href="https://teng-yang30.github.io/teng-yang/index">首頁 / Home</a>
+<a href="https://line.me/ti/p/~restore1101" target="_blank">LINE 詢問</a>
+</nav>
+</header>
+<main class="container">
+<div class="breadcrumb">
+<a href="https://teng-yang30.github.io/teng-yang/index">首頁</a>
+/
+<a href="#">全台商品配送免運費</a>
+/
+蓮花塔
+</div>
+<section class="product">
+
+<div class="gallery">
+
+<div class="thumbs">
+<img class="active" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product-category/lotus/%E8%93%AE%E8%8A%B1%E5%A1%94.jpg" alt="圓滿蓮花塔">
+</div>
+
+<div class="main-img">
+<img id="mainImg" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product-category/lotus/%E8%93%AE%E8%8A%B1%E5%A1%94.jpg" alt="圓滿蓮花塔">
+</div>
+
+</div>
+
+<div class="summary">
+
+<h1>
+圓滿蓮花塔
+</h1>
+
+<div class="price">
+NT$2,500
+</div>
+
+<div class="notice">
+
+<p>
+此商品適合告別式、公祭、追思法會、頭七、百日及對年祭祀使用。
+</p>
+
+<p>
+蓮花塔象徵清淨圓滿、福慧增長與一路生蓮，是喪禮常見的重要功德供品。
+</p>
+
+<p>
+適用佛教、道教及各類追思儀式，可搭配米塔、靈獅及高架花籃共同擺設。
+</p>
+
+</div>
+
+<a class="order" href="https://line.me/ti/p/~restore1101" target="_blank">
+<i class="fa-brands fa-line"></i>
+LINE 訂購
+</a>
+
+<div class="meta">
+
+分類：
+<a href="#">蓮花塔</a>，
+<a href="#">全館商品免運費</a>
+
+<br>
+
+標籤：蓮花塔、喪禮蓮花塔、告別式蓮花塔、追思蓮花塔
+
+<br>
+
+品牌：騰揚開發國際
+
+</div>
+
+</div>
+
+</section>
+
+<section class="tabs">
+
+<div class="tab-title">
+描述
+</div>
+
+<div class="desc">
+
+<h2>
+圓滿蓮花塔｜功德圓滿・一路生蓮
+</h2>
+
+<p>
+蓮花塔象徵清淨、圓滿與超脫，是佛教、道教喪禮中常見的重要供品之一。
+透過虔誠敬獻蓮花塔，表達對往生者的追思與祝福，祈願離苦得樂、往生善處、一路生蓮。
+</p>
+
+<h3>
+蓮花塔的寓意
+</h3>
+
+<ul>
+<li>象徵功德圓滿、福慧增長。</li>
+<li>代表對先人的思念與誠摯祝福。</li>
+<li>寓意離苦得樂、往生淨土。</li>
+<li>適合佛教、道教及追思法會使用。</li>
+<li>造型莊嚴大方，能提升會場整體氛圍。</li>
+</ul>
+
+<div class="quote">
+蓮花出淤泥而不染，象徵清淨無染。敬獻蓮花塔，不僅寄託思念，更代表對先人的祝福與功德迴向。
+</div>
+
+<h3>
+產品資訊一覽
+</h3>
+
+<table class="info-table">
+
+<tr>
+<th>商品名稱</th>
+<td>圓滿蓮花塔</td>
+</tr>
+
+<tr>
+<th>適用場合</th>
+<td>告別式、公祭、法會、頭七、百日、對年、追思會</td>
+</tr>
+
+<tr>
+<th>宗教適用</th>
+<td>佛教、道教及一般追思儀式</td>
+</tr>
+
+<tr>
+<th>擺放位置</th>
+<td>靈堂兩側、供桌旁、會場入口</td>
+</tr>
+
+<tr>
+<th>特色</th>
+<td>莊嚴大方、象徵圓滿、功德迴向、全台配送</td>
+</tr>
+
+<tr>
+<th>服務內容</th>
+<td>敬語卡製作、現場擺設、配送完成照片回傳</td>
+</tr>
+
+</table>
+
+<h3>
+訂購流程
+</h3>
+
+<ol>
+
+<li>
+加入 LINE 提供告別式日期、地點與聯絡資訊。
+</li>
+
+<li>
+選擇蓮花塔款式與預算。
+</li>
+
+<li>
+確認敬語卡內容與落款。
+</li>
+
+<li>
+安排配送與現場擺設。
+</li>
+
+<li>
+完成後回傳現場照片供確認。
+</li>
+
+</ol>
+
+<h3>
+適合搭配商品
+</h3>
+
+<ul>
+<li>平安米塔</li>
+<li>巨無霸米塔</li>
+<li>喪禮靈獅</li>
+<li>高架花籃</li>
+<li>鮮花追思花禮</li>
+</ul>
+
+<h3>
+常見問題
+</h3>
+
+<p>
+<strong>
+Q：蓮花塔通常需要送一對嗎？
+</strong>
+<br>
+A：一般建議以一對擺放較為莊嚴對稱，但亦可依預算及場地需求選擇單座。
+</p>
+
+<p>
+<strong>
+Q：蓮花塔適合哪些宗教場合？
+</strong>
+<br>
+A：佛教、道教及多數追思儀式皆適用，是目前最常見的追思供品之一。
+</p>
+
+<p>
+<strong>
+Q：可以指定顏色或樣式嗎？
+</strong>
+<br>
+A：可依現場需求及款式供應狀況協助安排。
+</p>
+
+<p>
+<strong>
+Q：急件可以配送嗎？
+</strong>
+<br>
+A：可先透過 LINE 詢問檔期，若時間允許可協助安排急件配送。
+</p>
+</div>
+</section>
+<section class="related">
+<h2>
+     相關商品
+    </h2>
+<div class="grid">
+<article class="card">
+<img alt="蓮花塔" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/New%20%E9%A8%B0%E6%8F%9A%E5%9C%96%E7%89%87/%E5%B0%81%E9%9D%A2%E7%B8%AE%E5%9C%96/(%E5%B0%81%E9%9D%A2)%E8%93%AE%E8%8A%B1%E5%A1%94.jpg"/>
+<h3>
+       圓滿蓮花塔
+      </h3>
+<div class="p">
+       歡迎詢價
+      </div>
+<a class="btn" href="https://line.me/ti/p/~restore1101" target="_blank">
+       LINE 訂購
+      </a>
+</article>
+<article class="card">
+<img alt="米塔" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/New%20%E9%A8%B0%E6%8F%9A%E5%9C%96%E7%89%87/%E5%B0%81%E9%9D%A2%E7%B8%AE%E5%9C%96/(%E5%B0%81%E9%9D%A2)%E5%96%AA%E7%A6%AE%E7%B1%B3%E5%A1%94.jpg"/>
+<h3>
+       喪禮米塔／平安米塔
+      </h3>
+<div class="p">
+       歡迎詢價
+      </div>
+<a class="btn" href="https://line.me/ti/p/~restore1101" target="_blank">
+       LINE 訂購
+      </a>
+</article>
+<article class="card">
+<img alt="靈獅" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/New%20%E9%A8%B0%E6%8F%9A%E5%9C%96%E7%89%87/%E5%B0%81%E9%9D%A2%E7%B8%AE%E5%9C%96/(%E5%B0%81%E9%9D%A2)%E5%96%AA%E7%A6%AE%E9%9D%88%E7%8D%85.jpg"/>
+<h3>
+       喪禮靈獅／告別式靈獅
+      </h3>
+<div class="p">
+       歡迎詢價
+      </div>
+<a class="btn" href="https://line.me/ti/p/~restore1101" target="_blank">
+       LINE 訂購
+      </a>
+</article>
+<article class="card">
+<img alt="祝賀花籃" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/New%20%E9%A8%B0%E6%8F%9A%E5%9C%96%E7%89%87/%E5%B0%81%E9%9D%A2%E7%B8%AE%E5%9C%96/(%E5%B0%81%E9%9D%A2)%E7%A5%9D%E8%B3%80%E8%8A%B1%E7%B1%83.jpg"/>
+<h3>
+       祝賀高架花籃
+      </h3>
+<div class="p">
+       歡迎詢價
+      </div>
+<a class="btn" href="https://line.me/ti/p/~restore1101" target="_blank">
+       LINE 訂購
+      </a>
+</article>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="footer-main">
+<div>
+<img alt="騰揚開發國際" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/New%20%E9%A8%B0%E6%8F%9A%E5%9C%96%E7%89%87/Logo%20(1).jpg"/>
+</div>
+<div>
+<h3>騰揚開發國際</h3>
+<p>統一編號：70502770</p>
+<a href="https://maps.app.goo.gl/zKCtBFSE5zeSFT11A" target="_blank">GOOGLE MAP 五星商家推薦</a>
+<a href="https://teng-yang30.github.io/teng-yang/New%E9%A8%B0%E6%8F%9A">回到首頁</a>
+</div>
+<div>
+<h3>騰揚開發國際</h3>
+<a href="#">所有商品-全台免運</a>
+<a href="#">追思流程-常見問題</a>
+<a href="#">花禮百科-相關文章</a>
+<a href="https://line.me/ti/p/~restore1101" target="_blank">聯繫我們-點擊加入LINE</a>
+</div>
+</div>
+<div class="footer-bottom">© 2026 騰揚開發國際, All rights reserved.</div>
+</footer>
+<script>
+const mainImg = document.getElementById('mainImg');
+
+if (mainImg) {
+    document.querySelectorAll('.thumbs img').forEach((img) => {
+        img.onclick = () => {
+            document.querySelectorAll('.thumbs img').forEach((item) => item.classList.remove('active'));
+            img.classList.add('active');
+            mainImg.src = img.src;
+        };
+    });
+}
+
+const fl = document.getElementById('float');
+const tg = document.getElementById('toggle');
+
+if (fl && tg) {
+    tg.onclick = () => {
+        fl.classList.toggle('open');
+        tg.textContent = fl.classList.contains('open') ? '✕' : '☰';
+    };
+}
+</script>
+</body>
+</html>
