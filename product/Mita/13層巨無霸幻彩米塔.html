@@ -635,6 +635,156 @@ header.simple-header {
         grid-template-columns: 1fr;
     }
 }
+
+
+/* ===== 商品圖片滑動淡出輪播 ===== */
+.gallery {
+  grid-template-columns:96px 1fr;
+  align-items:start;
+}
+
+.thumb-wrap {
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+}
+
+.thumb-wrap .thumbs {
+  width:100%;
+  max-height:468px;
+  overflow:hidden;
+  scroll-behavior:smooth;
+  padding:2px 0;
+}
+
+.thumb-arrow,
+.gallery-arrow {
+  border:0;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.25s ease;
+  user-select:none;
+}
+
+.thumb-arrow {
+  width:34px;
+  height:28px;
+  border-radius:999px;
+  background:rgba(34,34,34,.72);
+  color:#fff;
+  font-size:22px;
+  line-height:1;
+  box-shadow:0 8px 18px rgba(0,0,0,.18);
+}
+
+.thumb-arrow:hover {
+  background:var(--gold);
+  transform:translateY(-1px);
+}
+
+.main-img {
+  position:relative;
+  overflow:hidden;
+  touch-action:pan-y;
+}
+
+.main-img img {
+  transition:opacity .32s ease, transform .32s ease;
+  will-change:opacity, transform;
+}
+
+.main-img img.fade-out {
+  opacity:0;
+  transform:scale(.985);
+}
+
+.gallery-arrow {
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:5;
+  width:44px;
+  height:58px;
+  border-radius:999px;
+  background:rgba(0,0,0,.38);
+  color:#fff;
+  font-size:34px;
+  opacity:0;
+}
+
+.main-img:hover .gallery-arrow,
+.gallery-arrow:focus-visible {
+  opacity:1;
+}
+
+.gallery-arrow:hover {
+  background:rgba(168,117,24,.88);
+}
+
+.gallery-prev {
+  left:14px;
+}
+
+.gallery-next {
+  right:14px;
+}
+
+@media(max-width:800px) {
+  .gallery {
+    grid-template-columns:1fr;
+  }
+
+  .thumb-wrap {
+    order:2;
+    flex-direction:row;
+    width:100%;
+  }
+
+  .thumb-wrap .thumbs {
+    flex-direction:row;
+    overflow-x:auto;
+    overflow-y:hidden;
+    max-height:none;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .thumb-wrap .thumbs::-webkit-scrollbar {
+    display:none;
+  }
+
+  .thumb-arrow {
+    flex:0 0 auto;
+    width:32px;
+    height:48px;
+    font-size:28px;
+  }
+
+  .thumb-prev {
+    order:0;
+  }
+
+  .thumb-wrap .thumbs {
+    order:1;
+  }
+
+  .thumb-next {
+    order:2;
+  }
+
+  .gallery-arrow {
+    opacity:1;
+    width:38px;
+    height:48px;
+    font-size:28px;
+    background:rgba(0,0,0,.28);
+  }
+}
+
 </style>
 </head>
 <body id="top">
@@ -941,15 +1091,103 @@ A：可先透過 LINE 詢問檔期，如有現貨可協助安排急件配送。
 </footer>
 <script>
 const mainImg = document.getElementById('mainImg');
+const thumbs = Array.from(document.querySelectorAll('.thumbs img'));
+const mainBox = document.querySelector('.main-img');
+const galleryPrev = document.querySelector('.gallery-prev');
+const galleryNext = document.querySelector('.gallery-next');
+const thumbPrev = document.querySelector('.thumb-prev');
+const thumbNext = document.querySelector('.thumb-next');
+const thumbsBox = document.querySelector('.thumbs');
 
-if (mainImg) {
-    document.querySelectorAll('.thumbs img').forEach((img) => {
-        img.onclick = () => {
-            document.querySelectorAll('.thumbs img').forEach((item) => item.classList.remove('active'));
-            img.classList.add('active');
-            mainImg.src = img.src;
-        };
+if (mainImg && thumbs.length) {
+    let currentIndex = Math.max(0, thumbs.findIndex(img => img.src === mainImg.src));
+    let isChanging = false;
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    function scrollActiveThumb() {
+        const activeThumb = thumbs[currentIndex];
+        if (activeThumb) {
+            activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+    }
+
+    function showImage(index) {
+        if (isChanging || !thumbs.length) return;
+
+        if (index < 0) index = thumbs.length - 1;
+        if (index >= thumbs.length) index = 0;
+        if (index === currentIndex && mainImg.src === thumbs[index].src) return;
+
+        isChanging = true;
+        currentIndex = index;
+
+        thumbs.forEach(item => item.classList.remove('active'));
+        thumbs[currentIndex].classList.add('active');
+
+        mainImg.classList.add('fade-out');
+
+        setTimeout(() => {
+            mainImg.src = thumbs[currentIndex].src;
+            mainImg.alt = thumbs[currentIndex].alt || mainImg.alt;
+            scrollActiveThumb();
+
+            requestAnimationFrame(() => {
+                mainImg.classList.remove('fade-out');
+                setTimeout(() => {
+                    isChanging = false;
+                }, 320);
+            });
+        }, 180);
+    }
+
+    thumbs.forEach((img, index) => {
+        img.classList.toggle('active', index === currentIndex);
+        img.onclick = () => showImage(index);
     });
+
+    if (galleryPrev) galleryPrev.onclick = () => showImage(currentIndex - 1);
+    if (galleryNext) galleryNext.onclick = () => showImage(currentIndex + 1);
+
+    if (thumbPrev) thumbPrev.onclick = () => showImage(currentIndex - 1);
+    if (thumbNext) thumbNext.onclick = () => showImage(currentIndex + 1);
+
+    if (thumbsBox) {
+        thumbsBox.addEventListener('wheel', (e) => {
+            if (window.innerWidth <= 800) return;
+            e.preventDefault();
+            thumbsBox.scrollBy({ top: e.deltaY, behavior: 'smooth' });
+        }, { passive:false });
+    }
+
+    if (mainBox) {
+        mainBox.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        }, { passive:true });
+
+        mainBox.addEventListener('touchend', (e) => {
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+            const diffX = endX - touchStartX;
+            const diffY = endY - touchStartY;
+
+            if (Math.abs(diffX) < 45 || Math.abs(diffX) < Math.abs(diffY)) return;
+
+            if (diffX > 0) {
+                showImage(currentIndex - 1);
+            } else {
+                showImage(currentIndex + 1);
+            }
+        }, { passive:true });
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+        if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+    });
+
+    scrollActiveThumb();
 }
 
 const fl = document.getElementById('float');

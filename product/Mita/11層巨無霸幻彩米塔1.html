@@ -8,7 +8,7 @@
    全台配送－喪禮米塔｜騰揚開發國際
   </title>
 <meta name="description"
-content="騰揚開發國際提供9層巨無霸幻彩米塔、喪禮米塔、告別式米塔全台配送服務，象徵平安圓滿、福德綿延與愛心傳承。">
+content="騰揚開發國際提供11層巨無霸幻彩米塔、喪禮米塔、告別式米塔全台配送服務，象徵平安圓滿、福德綿延與愛心傳承。">
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
 <style>
    :root {
@@ -635,156 +635,6 @@ header.simple-header {
         grid-template-columns: 1fr;
     }
 }
-
-
-/* ===== 商品圖片滑動淡出輪播 ===== */
-.gallery {
-  grid-template-columns:96px 1fr;
-  align-items:start;
-}
-
-.thumb-wrap {
-  position:relative;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:8px;
-}
-
-.thumb-wrap .thumbs {
-  width:100%;
-  max-height:468px;
-  overflow:hidden;
-  scroll-behavior:smooth;
-  padding:2px 0;
-}
-
-.thumb-arrow,
-.gallery-arrow {
-  border:0;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:.25s ease;
-  user-select:none;
-}
-
-.thumb-arrow {
-  width:34px;
-  height:28px;
-  border-radius:999px;
-  background:rgba(34,34,34,.72);
-  color:#fff;
-  font-size:22px;
-  line-height:1;
-  box-shadow:0 8px 18px rgba(0,0,0,.18);
-}
-
-.thumb-arrow:hover {
-  background:var(--gold);
-  transform:translateY(-1px);
-}
-
-.main-img {
-  position:relative;
-  overflow:hidden;
-  touch-action:pan-y;
-}
-
-.main-img img {
-  transition:opacity .32s ease, transform .32s ease;
-  will-change:opacity, transform;
-}
-
-.main-img img.fade-out {
-  opacity:0;
-  transform:scale(.985);
-}
-
-.gallery-arrow {
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  z-index:5;
-  width:44px;
-  height:58px;
-  border-radius:999px;
-  background:rgba(0,0,0,.38);
-  color:#fff;
-  font-size:34px;
-  opacity:0;
-}
-
-.main-img:hover .gallery-arrow,
-.gallery-arrow:focus-visible {
-  opacity:1;
-}
-
-.gallery-arrow:hover {
-  background:rgba(168,117,24,.88);
-}
-
-.gallery-prev {
-  left:14px;
-}
-
-.gallery-next {
-  right:14px;
-}
-
-@media(max-width:800px) {
-  .gallery {
-    grid-template-columns:1fr;
-  }
-
-  .thumb-wrap {
-    order:2;
-    flex-direction:row;
-    width:100%;
-  }
-
-  .thumb-wrap .thumbs {
-    flex-direction:row;
-    overflow-x:auto;
-    overflow-y:hidden;
-    max-height:none;
-    scrollbar-width:none;
-    -webkit-overflow-scrolling:touch;
-  }
-
-  .thumb-wrap .thumbs::-webkit-scrollbar {
-    display:none;
-  }
-
-  .thumb-arrow {
-    flex:0 0 auto;
-    width:32px;
-    height:48px;
-    font-size:28px;
-  }
-
-  .thumb-prev {
-    order:0;
-  }
-
-  .thumb-wrap .thumbs {
-    order:1;
-  }
-
-  .thumb-next {
-    order:2;
-  }
-
-  .gallery-arrow {
-    opacity:1;
-    width:38px;
-    height:48px;
-    font-size:28px;
-    background:rgba(0,0,0,.28);
-  }
-}
-
 </style>
 </head>
 <body id="top">
@@ -829,12 +679,12 @@ header.simple-header {
 <div class="gallery">
 
 <div class="thumbs">
-<img class="active" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Mita/9%E5%B1%A4%E5%B7%A8%E7%84%A1%E9%9C%B8%E5%B9%BB%E5%BD%A9%E7%B1%B3%E5%A1%94%20(2).jpg" alt="九品蓮花塔">
-<img class="active" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Mita/9%E5%B1%A4%E5%B7%A8%E7%84%A1%E9%9C%B8%E5%B9%BB%E5%BD%A9%E7%B1%B3%E5%A1%94%20(5).jpg" alt="九品蓮花塔">
+<img class="active" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Mita/11%E5%B1%A4%E5%B7%A8%E7%84%A1%E9%9C%B8%E5%B9%BB%E5%BD%A9%E7%B1%B3%E5%A1%94%20(1).jpg" alt="九品蓮花塔">
+<img class="active" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Mita/11%E5%B1%A4%E5%B7%A8%E7%84%A1%E9%9C%B8%E5%B9%BB%E5%BD%A9%E7%B1%B3%E5%A1%94%20(2).jpg" alt="九品蓮花塔">
 </div>
 
 <div class="main-img">
-<img id="mainImg" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Mita/9%E5%B1%A4%E5%B7%A8%E7%84%A1%E9%9C%B8%E5%B9%BB%E5%BD%A9%E7%B1%B3%E5%A1%94%20(2).jpg" alt="九品蓮花塔">
+<img id="mainImg" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Mita/11%E5%B1%A4%E5%B7%A8%E7%84%A1%E9%9C%B8%E5%B9%BB%E5%BD%A9%E7%B1%B3%E5%A1%94%20(1).jpg" alt="九品蓮花塔">
 </div>
 
 </div>
@@ -842,7 +692,7 @@ header.simple-header {
 <div class="summary">
 
 <h1>
-9層巨無霸幻彩米塔
+11層巨無霸幻彩米塔
 </h1>
 
 <div class="price">
@@ -856,7 +706,7 @@ NT$
 </p>
 
 <p>
-9層巨無霸幻彩米塔融合大型米塔與幻彩燈光設計，象徵平安圓滿、福德綿延與愛心傳承。
+11層巨無霸幻彩米塔融合大型米塔與幻彩燈光設計，象徵平安圓滿、福德綿延與愛心傳承。
 </p>
 
 <p>
@@ -878,7 +728,7 @@ LINE 訂購
 
 <br>
 
-標籤：9層米塔、巨無霸幻彩米塔、喪禮米塔、告別式米塔、大型米塔
+標籤：11層米塔、巨無霸幻彩米塔、喪禮米塔、告別式米塔、大型米塔
 
 <br>
 
@@ -899,16 +749,16 @@ LINE 訂購
 <div class="desc">
 
 <h2>
-9層巨無霸幻彩米塔｜莊嚴氣派・平安傳承
+11層巨無霸幻彩米塔｜莊嚴氣派・平安傳承
 </h2>
 
 <p>
-9層巨無霸幻彩米塔以九層大型米塔結合柔和彩光設計，展現莊嚴宏偉的視覺效果，是告別式、公祭及追思法會中極具代表性的追思供品。
+11層巨無霸幻彩米塔以11層大型米塔結合柔和彩光設計，展現莊嚴宏偉的視覺效果，是告別式、公祭及追思法會中極具代表性的追思供品。
 層層堆疊的白米象徵平安圓滿、福德綿延，搭配幻彩燈光營造溫暖祥和的氛圍，寄託家屬與親友對往生者最誠摯的思念與祝福。
 </p>
 
 <h3>
-9層巨無霸幻彩米塔的寓意
+11層巨無霸幻彩米塔的寓意
 </h3>
 
 <ul>
@@ -931,7 +781,7 @@ LINE 訂購
 
 <tr>
 <th>商品名稱</th>
-<td>9層巨無霸幻彩米塔</td>
+<td>11層巨無霸幻彩米塔</td>
 </tr>
 
 <tr>
@@ -951,7 +801,7 @@ LINE 訂購
 
 <tr>
 <th>特色</th>
-<td>9層大型米塔、幻彩燈光、莊嚴氣派、全台配送</td>
+<td>11層大型米塔、幻彩燈光、莊嚴氣派、全台配送</td>
 </tr>
 
 <tr>
@@ -962,11 +812,11 @@ LINE 訂購
 </table>
 
 <h3>
-為什麼選擇9層巨無霸幻彩米塔？
+為什麼選擇11層巨無霸幻彩米塔？
 </h3>
 
 <ul>
-<li>九層大型規格，展現莊嚴宏偉氣勢。</li>
+<li>11層大型規格，展現莊嚴宏偉氣勢。</li>
 <li>幻彩燈光提升追思會場質感與溫馨氛圍。</li>
 <li>兼具追思意義與公益價值，白米可捐贈弱勢。</li>
 <li>適合作為大型告別式的主力追思佈置。</li>
@@ -979,7 +829,7 @@ LINE 訂購
 
 <ol>
 <li>加入 LINE 提供告別式日期與地點。</li>
-<li>確認9層巨無霸幻彩米塔款式與數量。</li>
+<li>確認11層巨無霸幻彩米塔款式與數量。</li>
 <li>確認敬語卡內容與落款。</li>
 <li>安排配送與現場擺設。</li>
 <li>完成後回傳現場照片供確認。</li>
@@ -1089,103 +939,15 @@ A：可先透過 LINE 詢問檔期，如有現貨可協助安排急件配送。
 </footer>
 <script>
 const mainImg = document.getElementById('mainImg');
-const thumbs = Array.from(document.querySelectorAll('.thumbs img'));
-const mainBox = document.querySelector('.main-img');
-const galleryPrev = document.querySelector('.gallery-prev');
-const galleryNext = document.querySelector('.gallery-next');
-const thumbPrev = document.querySelector('.thumb-prev');
-const thumbNext = document.querySelector('.thumb-next');
-const thumbsBox = document.querySelector('.thumbs');
 
-if (mainImg && thumbs.length) {
-    let currentIndex = Math.max(0, thumbs.findIndex(img => img.src === mainImg.src));
-    let isChanging = false;
-    let touchStartX = 0;
-    let touchStartY = 0;
-
-    function scrollActiveThumb() {
-        const activeThumb = thumbs[currentIndex];
-        if (activeThumb) {
-            activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        }
-    }
-
-    function showImage(index) {
-        if (isChanging || !thumbs.length) return;
-
-        if (index < 0) index = thumbs.length - 1;
-        if (index >= thumbs.length) index = 0;
-        if (index === currentIndex && mainImg.src === thumbs[index].src) return;
-
-        isChanging = true;
-        currentIndex = index;
-
-        thumbs.forEach(item => item.classList.remove('active'));
-        thumbs[currentIndex].classList.add('active');
-
-        mainImg.classList.add('fade-out');
-
-        setTimeout(() => {
-            mainImg.src = thumbs[currentIndex].src;
-            mainImg.alt = thumbs[currentIndex].alt || mainImg.alt;
-            scrollActiveThumb();
-
-            requestAnimationFrame(() => {
-                mainImg.classList.remove('fade-out');
-                setTimeout(() => {
-                    isChanging = false;
-                }, 320);
-            });
-        }, 180);
-    }
-
-    thumbs.forEach((img, index) => {
-        img.classList.toggle('active', index === currentIndex);
-        img.onclick = () => showImage(index);
+if (mainImg) {
+    document.querySelectorAll('.thumbs img').forEach((img) => {
+        img.onclick = () => {
+            document.querySelectorAll('.thumbs img').forEach((item) => item.classList.remove('active'));
+            img.classList.add('active');
+            mainImg.src = img.src;
+        };
     });
-
-    if (galleryPrev) galleryPrev.onclick = () => showImage(currentIndex - 1);
-    if (galleryNext) galleryNext.onclick = () => showImage(currentIndex + 1);
-
-    if (thumbPrev) thumbPrev.onclick = () => showImage(currentIndex - 1);
-    if (thumbNext) thumbNext.onclick = () => showImage(currentIndex + 1);
-
-    if (thumbsBox) {
-        thumbsBox.addEventListener('wheel', (e) => {
-            if (window.innerWidth <= 800) return;
-            e.preventDefault();
-            thumbsBox.scrollBy({ top: e.deltaY, behavior: 'smooth' });
-        }, { passive:false });
-    }
-
-    if (mainBox) {
-        mainBox.addEventListener('touchstart', (e) => {
-            touchStartX = e.touches[0].clientX;
-            touchStartY = e.touches[0].clientY;
-        }, { passive:true });
-
-        mainBox.addEventListener('touchend', (e) => {
-            const endX = e.changedTouches[0].clientX;
-            const endY = e.changedTouches[0].clientY;
-            const diffX = endX - touchStartX;
-            const diffY = endY - touchStartY;
-
-            if (Math.abs(diffX) < 45 || Math.abs(diffX) < Math.abs(diffY)) return;
-
-            if (diffX > 0) {
-                showImage(currentIndex - 1);
-            } else {
-                showImage(currentIndex + 1);
-            }
-        }, { passive:true });
-    }
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
-        if (e.key === 'ArrowRight') showImage(currentIndex + 1);
-    });
-
-    scrollActiveThumb();
 }
 
 const fl = document.getElementById('float');
