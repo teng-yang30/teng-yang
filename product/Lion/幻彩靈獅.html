@@ -7,8 +7,7 @@
 <title>
    全台配送－幻彩靈獅｜喪禮靈獅｜騰揚開發國際
   </title>
-<meta name="description"
-content="騰揚開發國際提供幻彩靈獅、喪禮靈獅、告別式靈獅全台配送服務，象徵祥獅護佑、福澤綿延與慎終追遠，營造莊嚴溫馨的追思氛圍。">
+<meta content="騰揚開發國際提供幻彩靈獅、喪禮靈獅、告別式靈獅全台配送服務，象徵祥獅護佑、福澤綿延與慎終追遠，營造莊嚴溫馨的追思氛圍。" name="description"/>
 <link crossorigin="anonymous" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" referrerpolicy="no-referrer" rel="stylesheet"/>
 <style>
    :root {
@@ -784,6 +783,158 @@ header.simple-header {
   }
 }
 
+
+
+/* ===== 商品圖滑動版修正版：統一覆蓋舊版縮圖排版 ===== */
+.product .gallery {
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  gap:14px !important;
+  width:100% !important;
+}
+
+.product .main-img {
+  position:relative !important;
+  border:1px solid var(--line) !important;
+  background:#fafafa !important;
+  padding:6px !important;
+  overflow:hidden !important;
+  cursor:grab !important;
+  width:100% !important;
+}
+
+.product .main-img img {
+  width:100% !important;
+  aspect-ratio:1/1 !important;
+  object-fit:cover !important;
+  transition:opacity .28s ease, transform .28s ease !important;
+  will-change:opacity, transform !important;
+}
+
+.product .main-img img.fade-out {
+  opacity:0 !important;
+  transform:scale(.985) !important;
+}
+
+.product .gallery-btn {
+  position:absolute !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  width:42px !important;
+  height:42px !important;
+  border:0 !important;
+  border-radius:50% !important;
+  background:rgba(0,0,0,.38) !important;
+  color:#fff !important;
+  font-size:30px !important;
+  line-height:1 !important;
+  cursor:pointer !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  opacity:.78 !important;
+  transition:.2s !important;
+  z-index:3 !important;
+  padding:0 !important;
+}
+
+.product .gallery-btn:hover {
+  opacity:1 !important;
+  background:rgba(0,0,0,.55) !important;
+}
+
+.product .gallery-btn.prev { left:16px !important; }
+.product .gallery-btn.next { right:16px !important; }
+
+.product .thumbs-wrap {
+  display:grid !important;
+  grid-template-columns:38px minmax(0,1fr) 38px !important;
+  align-items:center !important;
+  gap:8px !important;
+  width:100% !important;
+}
+
+.product .thumb-arrow {
+  width:38px !important;
+  height:72px !important;
+  border:1px solid var(--line) !important;
+  border-radius:10px !important;
+  background:rgba(255,255,255,.92) !important;
+  color:#8d5a00 !important;
+  font-size:28px !important;
+  font-weight:800 !important;
+  cursor:pointer !important;
+  box-shadow:0 6px 16px #0001 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:0 !important;
+}
+
+.product .thumbs {
+  display:flex !important;
+  flex-direction:row !important;
+  gap:12px !important;
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  scroll-behavior:smooth !important;
+  scrollbar-width:none !important;
+  padding:2px !important;
+  min-width:0 !important;
+  width:100% !important;
+  order:initial !important;
+}
+
+.product .thumbs::-webkit-scrollbar { display:none !important; }
+
+.product .thumbs img {
+  flex:0 0 78px !important;
+  width:78px !important;
+  height:auto !important;
+  border:1px solid var(--line) !important;
+  cursor:pointer !important;
+  aspect-ratio:1/1 !important;
+  object-fit:cover !important;
+  padding:3px !important;
+  background:#fff !important;
+  border-radius:8px !important;
+  opacity:.72 !important;
+  transition:.2s !important;
+  max-width:none !important;
+}
+
+.product .thumbs img:hover,
+.product .thumbs img.active { opacity:1 !important; }
+
+.product .thumbs img.active {
+  border:2px solid var(--gold) !important;
+  box-shadow:0 0 0 2px rgba(168,117,24,.15) !important;
+}
+
+@media(max-width:800px) {
+  .product { grid-template-columns:1fr !important; }
+  .product .gallery { grid-template-columns:1fr !important; }
+  .product .gallery-btn {
+    width:38px !important;
+    height:38px !important;
+    font-size:26px !important;
+  }
+  .product .gallery-btn.prev { left:10px !important; }
+  .product .gallery-btn.next { right:10px !important; }
+  .product .thumbs-wrap {
+    grid-template-columns:34px minmax(0,1fr) 34px !important;
+    gap:6px !important;
+  }
+  .product .thumb-arrow {
+    width:34px !important;
+    height:66px !important;
+    font-size:24px !important;
+  }
+  .product .thumbs img {
+    flex-basis:68px !important;
+    width:68px !important;
+  }
+}
 </style>
 </head>
 <body id="top">
@@ -824,101 +975,77 @@ header.simple-header {
 幻彩靈獅
 </div>
 <section class="product">
-
 <div class="gallery">
-
 <div class="main-img" id="mainImgBox">
-<button class="gallery-btn prev" type="button" aria-label="上一張">‹</button>
-<img id="mainImg" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Lion/%E5%B9%BB%E5%BD%A9%E9%9D%88%E7%8D%85%20(1).jpg" alt="九品蓮花塔">
-<button class="gallery-btn next" type="button" aria-label="下一張">›</button>
+<button aria-label="上一張" class="gallery-btn prev" type="button">‹</button>
+<img alt="九品蓮花塔" id="mainImg" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Lion/%E5%B9%BB%E5%BD%A9%E9%9D%88%E7%8D%85%20(1).jpg"/>
+<button aria-label="下一張" class="gallery-btn next" type="button">›</button>
 </div>
-
 <div class="thumbs-wrap">
-<button class="thumb-arrow thumb-prev" type="button" aria-label="縮圖上一張">‹</button>
+<button aria-label="縮圖上一張" class="thumb-arrow thumb-prev" type="button">‹</button>
 <div class="thumbs">
-<img class="active" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Lion/%E5%B9%BB%E5%BD%A9%E9%9D%88%E7%8D%85%20(1).jpg" alt="九品蓮花塔">
-<img src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Lion/%E5%B9%BB%E5%BD%A9%E9%9D%88%E7%8D%85%20(4).jpg" alt="九品蓮花塔">
-<img src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Lion/%E5%B9%BB%E5%BD%A9%E9%9D%88%E7%8D%85%20(5).jpg" alt="九品蓮花塔">
-<img src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Lion/%E5%B9%BB%E5%BD%A9%E9%9D%88%E7%8D%85%20(6).jpg" alt="九品蓮花塔">
-<img src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Lion/%E5%B9%BB%E5%BD%A9%E9%9D%88%E7%8D%85%20(7).jpg" alt="九品蓮花塔">
+<img alt="九品蓮花塔" class="active" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Lion/%E5%B9%BB%E5%BD%A9%E9%9D%88%E7%8D%85%20(1).jpg"/>
+<img alt="九品蓮花塔" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Lion/%E5%B9%BB%E5%BD%A9%E9%9D%88%E7%8D%85%20(4).jpg"/>
+<img alt="九品蓮花塔" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Lion/%E5%B9%BB%E5%BD%A9%E9%9D%88%E7%8D%85%20(5).jpg"/>
+<img alt="九品蓮花塔" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Lion/%E5%B9%BB%E5%BD%A9%E9%9D%88%E7%8D%85%20(6).jpg"/>
+<img alt="九品蓮花塔" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Lion/%E5%B9%BB%E5%BD%A9%E9%9D%88%E7%8D%85%20(7).jpg"/>
 </div>
-<button class="thumb-arrow thumb-next" type="button" aria-label="縮圖下一張">›</button>
+<button aria-label="縮圖下一張" class="thumb-arrow thumb-next" type="button">›</button>
 </div>
-
 </div>
-
 <div class="summary">
-
 <h1>
 幻彩靈獅
 </h1>
-
 <div class="price">
 NT$
 </div>
-
 <div class="notice">
-
 <p>
 此商品適合告別式、公祭、追思法會、頭七、百日及對年祭祀使用。
 </p>
-
 <p>
 幻彩靈獅象徵祥獅護佑、慎終追遠與誠摯追思，是告別式中常見且莊嚴的追思供品。
 </p>
-
 <p>
 潔白典雅的造型展現對往生者的尊重與懷念，為告別式增添莊重肅穆的氛圍。
 </p>
-
 </div>
-
 <a class="order" href="https://line.me/ti/p/~restore1101" target="_blank">
 <i class="fa-brands fa-line"></i>
 LINE 訂購
 </a>
-
 <div class="meta">
 
 分類：
 <a href="https://teng-yang30.github.io/teng-yang/product-category/page_04.html">喪禮靈獅／告別式靈獅</a>，
 <a href="https://teng-yang30.github.io/teng-yang/product-category/page_04.html">全館商品免運費</a>
-
-<br>
+<br/>
 
 標籤：幻彩靈獅、喪禮靈獅、告別式靈獅、祥獅、LED靈獅
 
-<br>
+<br/>
 
 品牌：騰揚開發國際
 
 </div>
-
 </div>
-
 </section>
-
 <section class="tabs">
-
 <div class="tab-title">
 描述
 </div>
-
 <div class="desc">
-
 <h2>
 幻彩靈獅｜祥獅獻瑞・福澤綿延
 </h2>
-
 <p>
 幻彩靈獅以精緻典雅的設計搭配柔和彩光，象徵祥獅護佑、福澤綿延與慎終追遠，是告別式、公祭及追思法會中深受青睞的追思供品之一。
 莊嚴大器的造型結合溫暖燈光，不僅展現對往生者的敬意，也為追思會場增添莊重、溫馨且祥和的氛圍。
 </p>
-
 <h3>
 幻彩靈獅的寓意
 </h3>
-
 <ul>
 <li>象徵祥獅護佑、福氣常伴。</li>
 <li>代表慎終追遠、感恩追思。</li>
@@ -926,53 +1053,41 @@ LINE 訂購
 <li>柔和彩光象徵光明祝福與希望。</li>
 <li>適合佛教、道教及各類追思儀式。</li>
 </ul>
-
 <div class="quote">
 以祥獅守護思念，以祥光傳遞祝福，願先人安息、福澤綿延，庇佑家人平安順遂。
 </div>
-
 <h3>
 產品資訊一覽
 </h3>
-
 <table class="info-table">
-
 <tr>
 <th>商品名稱</th>
 <td>幻彩靈獅</td>
 </tr>
-
 <tr>
 <th>適用場合</th>
 <td>告別式、公祭、頭七、百日、對年、追思法會</td>
 </tr>
-
 <tr>
 <th>宗教適用</th>
 <td>佛教、道教及一般追思儀式</td>
 </tr>
-
 <tr>
 <th>擺放位置</th>
 <td>靈堂兩側、主祭區、會場入口</td>
 </tr>
-
 <tr>
 <th>特色</th>
 <td>幻彩燈光、祥獅造型、莊嚴典雅、全台配送</td>
 </tr>
-
 <tr>
 <th>服務內容</th>
 <td>敬輓題字、現場擺設、配送完成照片回傳</td>
 </tr>
-
 </table>
-
 <h3>
 為什麼選擇幻彩靈獅？
 </h3>
-
 <ul>
 <li>幻彩燈光柔和典雅，營造溫馨追思氛圍。</li>
 <li>祥獅寓意守護與吉祥，象徵福澤延續。</li>
@@ -980,11 +1095,9 @@ LINE 訂購
 <li>可搭配平安米塔、蓮花塔、高架花籃共同擺設。</li>
 <li>適合親友、公司行號及團體共同致贈。</li>
 </ul>
-
 <h3>
 訂購流程
 </h3>
-
 <ol>
 <li>加入 LINE 提供告別式日期與地點。</li>
 <li>確認幻彩靈獅款式與數量。</li>
@@ -992,28 +1105,23 @@ LINE 訂購
 <li>安排配送與現場擺設。</li>
 <li>完成後回傳現場照片供確認。</li>
 </ol>
-
 <h3>
 常見問題
 </h3>
-
 <p>
-<strong>Q：幻彩靈獅與白光靈獅有什麼不同？</strong><br>
+<strong>Q：幻彩靈獅與白光靈獅有什麼不同？</strong><br/>
 A：幻彩靈獅採用柔和彩光設計，整體更具層次感與溫馨氛圍；白光靈獅則以純白光呈現簡約莊嚴的風格，可依家屬喜好選擇。
 </p>
-
 <p>
-<strong>Q：適合哪些場合使用？</strong><br>
+<strong>Q：適合哪些場合使用？</strong><br/>
 A：適用於告別式、公祭、追思法會、百日、對年及各類追思儀式。
 </p>
-
 <p>
-<strong>Q：可以搭配其他商品嗎？</strong><br>
+<strong>Q：可以搭配其他商品嗎？</strong><br/>
 A：可搭配平安米塔、蓮花塔、高架花籃等商品，讓追思會場更加莊嚴完整。
 </p>
-
 <p>
-<strong>Q：可以急件配送嗎？</strong><br>
+<strong>Q：可以急件配送嗎？</strong><br/>
 A：可先透過 LINE 詢問檔期，如有現貨可協助安排急件配送。
 </p>
 </div>
@@ -1024,7 +1132,7 @@ A：可先透過 LINE 詢問檔期，如有現貨可協助安排急件配送。
     </h2>
 <div class="grid">
 <article class="card">
-<img alt="蓮花塔" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/lotus/(%E5%B0%81%E9%9D%A2)%E8%93%AE%E8%8A%B1%E5%A1%94.jpg"/>
+<img alt="蓮花塔" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/lotus/(%E5%B0%81%E9%9D%A2)%E8%93%AE%E8%8A%B1%E5%A1%94.jpg">
 <h3>
        圓滿蓮花塔
       </h3>
@@ -1034,9 +1142,9 @@ A：可先透過 LINE 詢問檔期，如有現貨可協助安排急件配送。
 <a class="btn" href="https://line.me/ti/p/~restore1101" target="_blank">
        LINE 訂購
       </a>
-</article>
+</img></article>
 <article class="card">
-<img alt="米塔" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Mita/11%E5%B1%A4%E5%B9%BB%E5%BD%A9%E7%B1%B3%E5%A1%94%20(3).jpg"/>
+<img alt="米塔" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Mita/11%E5%B1%A4%E5%B9%BB%E5%BD%A9%E7%B1%B3%E5%A1%94%20(3).jpg">
 <h3>
        喪禮米塔／平安米塔
       </h3>
@@ -1046,9 +1154,9 @@ A：可先透過 LINE 詢問檔期，如有現貨可協助安排急件配送。
 <a class="btn" href="https://line.me/ti/p/~restore1101" target="_blank">
        LINE 訂購
       </a>
-</article>
+</img></article>
 <article class="card">
-<img alt="靈獅" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Lion/%E5%B9%BB%E5%BD%A9%E9%9D%88%E7%8D%85%20(7).jpg"/>
+<img alt="靈獅" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Lion/%E5%B9%BB%E5%BD%A9%E9%9D%88%E7%8D%85%20(7).jpg">
 <h3>
        喪禮靈獅／告別式靈獅
       </h3>
@@ -1058,9 +1166,9 @@ A：可先透過 LINE 詢問檔期，如有現貨可協助安排急件配送。
 <a class="btn" href="https://line.me/ti/p/~restore1101" target="_blank">
        LINE 訂購
       </a>
-</article>
+</img></article>
 <article class="card">
-<img alt="祝賀花籃" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Flowers/%E6%97%A5%E5%BC%8F%E8%98%AD%E8%8A%B1%20(1).jpg"/>
+<img alt="祝賀花籃" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Flowers/%E6%97%A5%E5%BC%8F%E8%98%AD%E8%8A%B1%20(1).jpg">
 <h3>
        祝賀高架花籃
       </h3>
@@ -1070,15 +1178,15 @@ A：可先透過 LINE 詢問檔期，如有現貨可協助安排急件配送。
 <a class="btn" href="https://line.me/ti/p/~restore1101" target="_blank">
        LINE 訂購
       </a>
-</article>
+</img></article>
 </div>
 </section>
 </main>
 <footer class="site-footer">
 <div class="footer-main">
 <div>
-<img alt="騰揚開發國際" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/Home/Logo%20(1).jpg"/>
-</div>
+<img alt="騰揚開發國際" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/Home/Logo%20(1).jpg">
+</img></div>
 <div>
 <h3>騰揚開發國際</h3>
 <p>統一編號：60678655</p>
@@ -1095,11 +1203,11 @@ A：可先透過 LINE 詢問檔期，如有現貨可協助安排急件配送。
 </div>
 <div class="footer-bottom">© 2026 騰揚開發國際, All rights reserved.</div>
 </footer>
+
 <script>
 const mainImg = document.getElementById('mainImg');
 const mainImgBox = document.getElementById('mainImgBox');
-const thumbs = Array.from(document.querySelectorAll('.thumbs img'));
-const thumbTrack = document.querySelector('.thumbs');
+const thumbs = Array.from(document.querySelectorAll('.product .thumbs img'));
 const galleryPrev = document.querySelector('.gallery-btn.prev');
 const galleryNext = document.querySelector('.gallery-btn.next');
 const thumbPrev = document.querySelector('.thumb-prev');
@@ -1110,72 +1218,84 @@ let isChanging = false;
 let touchStartX = 0;
 let touchStartY = 0;
 
+function normalizeIndex(index) {
+  if (thumbs.length === 0) return 0;
+  if (index < 0) return thumbs.length - 1;
+  if (index >= thumbs.length) return 0;
+  return index;
+}
+
+function updateThumb(index) {
+  thumbs.forEach((item) => item.classList.remove('active'));
+  if (thumbs[index]) {
+    thumbs[index].classList.add('active');
+    thumbs[index].scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' });
+  }
+}
+
 function showImage(index, useFade = true) {
-    if (!mainImg || thumbs.length === 0 || isChanging) return;
+  if (!mainImg || thumbs.length === 0 || isChanging) return;
 
-    if (index < 0) index = thumbs.length - 1;
-    if (index >= thumbs.length) index = 0;
-    if (index === currentIndex && mainImg.src === thumbs[index].src) return;
+  index = normalizeIndex(index);
+  const target = thumbs[index];
+  if (!target) return;
 
-    currentIndex = index;
-    isChanging = true;
+  if (index === currentIndex && mainImg.src === target.src) {
+    updateThumb(index);
+    return;
+  }
 
-    thumbs.forEach((item) => item.classList.remove('active'));
-    thumbs[currentIndex].classList.add('active');
-    thumbs[currentIndex].scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' });
+  currentIndex = index;
+  isChanging = true;
+  updateThumb(currentIndex);
 
-    const changeSrc = () => {
-        mainImg.src = thumbs[currentIndex].src;
-        mainImg.alt = thumbs[currentIndex].alt || mainImg.alt;
-        requestAnimationFrame(() => {
-            mainImg.classList.remove('fade-out');
-            window.setTimeout(() => { isChanging = false; }, 280);
-        });
-    };
+  const changeSrc = () => {
+    mainImg.src = target.src;
+    mainImg.alt = target.alt || mainImg.alt;
+    requestAnimationFrame(() => {
+      mainImg.classList.remove('fade-out');
+      window.setTimeout(() => { isChanging = false; }, 280);
+    });
+  };
 
-    if (useFade) {
-        mainImg.classList.add('fade-out');
-        window.setTimeout(changeSrc, 170);
-    } else {
-        changeSrc();
-    }
+  if (useFade) {
+    mainImg.classList.add('fade-out');
+    window.setTimeout(changeSrc, 170);
+  } else {
+    changeSrc();
+  }
 }
 
 thumbs.forEach((img, index) => {
-    img.onclick = () => showImage(index);
+  img.addEventListener('click', () => showImage(index));
 });
 
 galleryPrev?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    showImage(currentIndex - 1);
+  e.stopPropagation();
+  showImage(currentIndex - 1);
 });
 
 galleryNext?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    showImage(currentIndex + 1);
+  e.stopPropagation();
+  showImage(currentIndex + 1);
 });
 
 thumbPrev?.addEventListener('click', () => showImage(currentIndex - 1));
 thumbNext?.addEventListener('click', () => showImage(currentIndex + 1));
 
 mainImgBox?.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
 }, { passive:true });
 
 mainImgBox?.addEventListener('touchend', (e) => {
-    const touchEndX = e.changedTouches[0].clientX;
-    const touchEndY = e.changedTouches[0].clientY;
-    const diffX = touchEndX - touchStartX;
-    const diffY = touchEndY - touchStartY;
+  const touchEndX = e.changedTouches[0].clientX;
+  const touchEndY = e.changedTouches[0].clientY;
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchEndY - touchStartY;
 
-    if (Math.abs(diffX) < 45 || Math.abs(diffX) < Math.abs(diffY)) return;
-
-    if (diffX > 0) {
-        showImage(currentIndex - 1);
-    } else {
-        showImage(currentIndex + 1);
-    }
+  if (Math.abs(diffX) < 45 || Math.abs(diffX) < Math.abs(diffY)) return;
+  showImage(diffX > 0 ? currentIndex - 1 : currentIndex + 1);
 }, { passive:true });
 
 showImage(0, false);
@@ -1184,11 +1304,10 @@ const fl = document.getElementById('float');
 const tg = document.getElementById('toggle');
 
 if (fl && tg) {
-    tg.onclick = () => {
-        fl.classList.toggle('open');
-        tg.textContent = fl.classList.contains('open') ? '✕' : '☰';
-    };
+  tg.onclick = () => {
+    fl.classList.toggle('open');
+    tg.textContent = fl.classList.contains('open') ? '✕' : '☰';
+  };
 }
-</script>
-</body>
+</script></body>
 </html>

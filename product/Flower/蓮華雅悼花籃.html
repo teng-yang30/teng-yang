@@ -783,6 +783,158 @@ header.simple-header {
   }
 }
 
+
+
+/* ===== 商品圖滑動版修正版：統一覆蓋舊版縮圖排版 ===== */
+.product .gallery {
+  display:grid !important;
+  grid-template-columns:1fr !important;
+  gap:14px !important;
+  width:100% !important;
+}
+
+.product .main-img {
+  position:relative !important;
+  border:1px solid var(--line) !important;
+  background:#fafafa !important;
+  padding:6px !important;
+  overflow:hidden !important;
+  cursor:grab !important;
+  width:100% !important;
+}
+
+.product .main-img img {
+  width:100% !important;
+  aspect-ratio:1/1 !important;
+  object-fit:cover !important;
+  transition:opacity .28s ease, transform .28s ease !important;
+  will-change:opacity, transform !important;
+}
+
+.product .main-img img.fade-out {
+  opacity:0 !important;
+  transform:scale(.985) !important;
+}
+
+.product .gallery-btn {
+  position:absolute !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  width:42px !important;
+  height:42px !important;
+  border:0 !important;
+  border-radius:50% !important;
+  background:rgba(0,0,0,.38) !important;
+  color:#fff !important;
+  font-size:30px !important;
+  line-height:1 !important;
+  cursor:pointer !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  opacity:.78 !important;
+  transition:.2s !important;
+  z-index:3 !important;
+  padding:0 !important;
+}
+
+.product .gallery-btn:hover {
+  opacity:1 !important;
+  background:rgba(0,0,0,.55) !important;
+}
+
+.product .gallery-btn.prev { left:16px !important; }
+.product .gallery-btn.next { right:16px !important; }
+
+.product .thumbs-wrap {
+  display:grid !important;
+  grid-template-columns:38px minmax(0,1fr) 38px !important;
+  align-items:center !important;
+  gap:8px !important;
+  width:100% !important;
+}
+
+.product .thumb-arrow {
+  width:38px !important;
+  height:72px !important;
+  border:1px solid var(--line) !important;
+  border-radius:10px !important;
+  background:rgba(255,255,255,.92) !important;
+  color:#8d5a00 !important;
+  font-size:28px !important;
+  font-weight:800 !important;
+  cursor:pointer !important;
+  box-shadow:0 6px 16px #0001 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:0 !important;
+}
+
+.product .thumbs {
+  display:flex !important;
+  flex-direction:row !important;
+  gap:12px !important;
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  scroll-behavior:smooth !important;
+  scrollbar-width:none !important;
+  padding:2px !important;
+  min-width:0 !important;
+  width:100% !important;
+  order:initial !important;
+}
+
+.product .thumbs::-webkit-scrollbar { display:none !important; }
+
+.product .thumbs img {
+  flex:0 0 78px !important;
+  width:78px !important;
+  height:auto !important;
+  border:1px solid var(--line) !important;
+  cursor:pointer !important;
+  aspect-ratio:1/1 !important;
+  object-fit:cover !important;
+  padding:3px !important;
+  background:#fff !important;
+  border-radius:8px !important;
+  opacity:.72 !important;
+  transition:.2s !important;
+  max-width:none !important;
+}
+
+.product .thumbs img:hover,
+.product .thumbs img.active { opacity:1 !important; }
+
+.product .thumbs img.active {
+  border:2px solid var(--gold) !important;
+  box-shadow:0 0 0 2px rgba(168,117,24,.15) !important;
+}
+
+@media(max-width:800px) {
+  .product { grid-template-columns:1fr !important; }
+  .product .gallery { grid-template-columns:1fr !important; }
+  .product .gallery-btn {
+    width:38px !important;
+    height:38px !important;
+    font-size:26px !important;
+  }
+  .product .gallery-btn.prev { left:10px !important; }
+  .product .gallery-btn.next { right:10px !important; }
+  .product .thumbs-wrap {
+    grid-template-columns:34px minmax(0,1fr) 34px !important;
+    gap:6px !important;
+  }
+  .product .thumb-arrow {
+    width:34px !important;
+    height:66px !important;
+    font-size:24px !important;
+  }
+  .product .thumbs img {
+    flex-basis:68px !important;
+    width:68px !important;
+  }
+}
 </style>
 </head>
 <body id="top">
@@ -826,23 +978,19 @@ header.simple-header {
     / 喪禮花籃、告別式花籃
    </div>
 <section class="product">
-
 <div class="gallery">
-
 <div class="main-img" id="mainImgBox">
-<button class="gallery-btn prev" type="button" aria-label="上一張">‹</button>
-<img id="mainImg" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Flower/3500%E9%AB%98%E6%9E%B6%E8%9D%B4%E8%9D%B6%E8%98%AD%20(3).jpg" alt="喪禮花籃">
-<button class="gallery-btn next" type="button" aria-label="下一張">›</button>
+<button aria-label="上一張" class="gallery-btn prev" type="button">‹</button>
+<img alt="喪禮花籃" id="mainImg" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Flower/3500%E9%AB%98%E6%9E%B6%E8%9D%B4%E8%9D%B6%E8%98%AD%20(3).jpg"/>
+<button aria-label="下一張" class="gallery-btn next" type="button">›</button>
 </div>
-
 <div class="thumbs-wrap">
-<button class="thumb-arrow thumb-prev" type="button" aria-label="縮圖上一張">‹</button>
+<button aria-label="縮圖上一張" class="thumb-arrow thumb-prev" type="button">‹</button>
 <div class="thumbs">
-<img class="active" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Flower/3500%E9%AB%98%E6%9E%B6%E8%9D%B4%E8%9D%B6%E8%98%AD%20(3).jpg" alt="喪禮花籃">
+<img alt="喪禮花籃" class="active" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Flower/3500%E9%AB%98%E6%9E%B6%E8%9D%B4%E8%9D%B6%E8%98%AD%20(3).jpg"/>
 </div>
-<button class="thumb-arrow thumb-next" type="button" aria-label="縮圖下一張">›</button>
+<button aria-label="縮圖下一張" class="thumb-arrow thumb-next" type="button">›</button>
 </div>
-
 </div>
 <div class="summary">
 <h1>
@@ -1005,7 +1153,7 @@ header.simple-header {
     </h2>
 <div class="grid">
 <article class="card">
-<img alt="蓮花塔" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/lotus/(%E5%B0%81%E9%9D%A2)%E8%93%AE%E8%8A%B1%E5%A1%94.jpg"/>
+<img alt="蓮花塔" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/lotus/(%E5%B0%81%E9%9D%A2)%E8%93%AE%E8%8A%B1%E5%A1%94.jpg">
 <h3>
        圓滿蓮花塔
       </h3>
@@ -1015,9 +1163,9 @@ header.simple-header {
 <a class="btn" href="https://line.me/ti/p/~restore1101" target="_blank">
        LINE 訂購
       </a>
-</article>
+</img></article>
 <article class="card">
-<img alt="米塔" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Mita/11%E5%B1%A4%E5%B9%BB%E5%BD%A9%E7%B1%B3%E5%A1%94%20(3).jpg"/>
+<img alt="米塔" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Mita/11%E5%B1%A4%E5%B9%BB%E5%BD%A9%E7%B1%B3%E5%A1%94%20(3).jpg">
 <h3>
        喪禮米塔／平安米塔
       </h3>
@@ -1027,7 +1175,7 @@ header.simple-header {
 <a class="btn" href="https://line.me/ti/p/~restore1101" target="_blank">
        LINE 訂購
       </a>
-</article>
+</img></article>
 <article class="card">
 <img alt="靈獅" src="https://raw.githubusercontent.com/teng-yang30/teng-yang/refs/heads/main/product/Lion/%E5%B9%BB%E5%BD%A9%E9%9D%88%E7%8D%85%20(7).jpg"/>
 <h3>
@@ -1076,11 +1224,11 @@ header.simple-header {
 </div>
 <div class="footer-bottom">© 2026 騰揚開發國際, All rights reserved.</div>
 </footer>
+
 <script>
 const mainImg = document.getElementById('mainImg');
 const mainImgBox = document.getElementById('mainImgBox');
-const thumbs = Array.from(document.querySelectorAll('.thumbs img'));
-const thumbTrack = document.querySelector('.thumbs');
+const thumbs = Array.from(document.querySelectorAll('.product .thumbs img'));
 const galleryPrev = document.querySelector('.gallery-btn.prev');
 const galleryNext = document.querySelector('.gallery-btn.next');
 const thumbPrev = document.querySelector('.thumb-prev');
@@ -1091,72 +1239,84 @@ let isChanging = false;
 let touchStartX = 0;
 let touchStartY = 0;
 
+function normalizeIndex(index) {
+  if (thumbs.length === 0) return 0;
+  if (index < 0) return thumbs.length - 1;
+  if (index >= thumbs.length) return 0;
+  return index;
+}
+
+function updateThumb(index) {
+  thumbs.forEach((item) => item.classList.remove('active'));
+  if (thumbs[index]) {
+    thumbs[index].classList.add('active');
+    thumbs[index].scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' });
+  }
+}
+
 function showImage(index, useFade = true) {
-    if (!mainImg || thumbs.length === 0 || isChanging) return;
+  if (!mainImg || thumbs.length === 0 || isChanging) return;
 
-    if (index < 0) index = thumbs.length - 1;
-    if (index >= thumbs.length) index = 0;
-    if (index === currentIndex && mainImg.src === thumbs[index].src) return;
+  index = normalizeIndex(index);
+  const target = thumbs[index];
+  if (!target) return;
 
-    currentIndex = index;
-    isChanging = true;
+  if (index === currentIndex && mainImg.src === target.src) {
+    updateThumb(index);
+    return;
+  }
 
-    thumbs.forEach((item) => item.classList.remove('active'));
-    thumbs[currentIndex].classList.add('active');
-    thumbs[currentIndex].scrollIntoView({ behavior:'smooth', inline:'center', block:'nearest' });
+  currentIndex = index;
+  isChanging = true;
+  updateThumb(currentIndex);
 
-    const changeSrc = () => {
-        mainImg.src = thumbs[currentIndex].src;
-        mainImg.alt = thumbs[currentIndex].alt || mainImg.alt;
-        requestAnimationFrame(() => {
-            mainImg.classList.remove('fade-out');
-            window.setTimeout(() => { isChanging = false; }, 280);
-        });
-    };
+  const changeSrc = () => {
+    mainImg.src = target.src;
+    mainImg.alt = target.alt || mainImg.alt;
+    requestAnimationFrame(() => {
+      mainImg.classList.remove('fade-out');
+      window.setTimeout(() => { isChanging = false; }, 280);
+    });
+  };
 
-    if (useFade) {
-        mainImg.classList.add('fade-out');
-        window.setTimeout(changeSrc, 170);
-    } else {
-        changeSrc();
-    }
+  if (useFade) {
+    mainImg.classList.add('fade-out');
+    window.setTimeout(changeSrc, 170);
+  } else {
+    changeSrc();
+  }
 }
 
 thumbs.forEach((img, index) => {
-    img.onclick = () => showImage(index);
+  img.addEventListener('click', () => showImage(index));
 });
 
 galleryPrev?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    showImage(currentIndex - 1);
+  e.stopPropagation();
+  showImage(currentIndex - 1);
 });
 
 galleryNext?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    showImage(currentIndex + 1);
+  e.stopPropagation();
+  showImage(currentIndex + 1);
 });
 
 thumbPrev?.addEventListener('click', () => showImage(currentIndex - 1));
 thumbNext?.addEventListener('click', () => showImage(currentIndex + 1));
 
 mainImgBox?.addEventListener('touchstart', (e) => {
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
+  touchStartX = e.touches[0].clientX;
+  touchStartY = e.touches[0].clientY;
 }, { passive:true });
 
 mainImgBox?.addEventListener('touchend', (e) => {
-    const touchEndX = e.changedTouches[0].clientX;
-    const touchEndY = e.changedTouches[0].clientY;
-    const diffX = touchEndX - touchStartX;
-    const diffY = touchEndY - touchStartY;
+  const touchEndX = e.changedTouches[0].clientX;
+  const touchEndY = e.changedTouches[0].clientY;
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchEndY - touchStartY;
 
-    if (Math.abs(diffX) < 45 || Math.abs(diffX) < Math.abs(diffY)) return;
-
-    if (diffX > 0) {
-        showImage(currentIndex - 1);
-    } else {
-        showImage(currentIndex + 1);
-    }
+  if (Math.abs(diffX) < 45 || Math.abs(diffX) < Math.abs(diffY)) return;
+  showImage(diffX > 0 ? currentIndex - 1 : currentIndex + 1);
 }, { passive:true });
 
 showImage(0, false);
@@ -1165,11 +1325,10 @@ const fl = document.getElementById('float');
 const tg = document.getElementById('toggle');
 
 if (fl && tg) {
-    tg.onclick = () => {
-        fl.classList.toggle('open');
-        tg.textContent = fl.classList.contains('open') ? '✕' : '☰';
-    };
+  tg.onclick = () => {
+    fl.classList.toggle('open');
+    tg.textContent = fl.classList.contains('open') ? '✕' : '☰';
+  };
 }
-</script>
-</body>
+</script></body>
 </html>
