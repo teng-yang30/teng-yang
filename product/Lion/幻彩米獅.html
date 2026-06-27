@@ -941,17 +941,74 @@ A：可先透過 LINE 詢問檔期，如有現貨可協助安排急件配送。
 <div class="footer-bottom">© 2026 騰揚開發國際, All rights reserved.</div>
 </footer>
 <script>
+const thumbs = document.querySelectorAll('.thumbs img');
 const mainImg = document.getElementById('mainImg');
 
-if (mainImg) {
-    document.querySelectorAll('.thumbs img').forEach((img) => {
-        img.onclick = () => {
-            document.querySelectorAll('.thumbs img').forEach((item) => item.classList.remove('active'));
-            img.classList.add('active');
-            mainImg.src = img.src;
-        };
-    });
+let currentIndex = 0;
+
+// 顯示指定圖片
+function showImage(index) {
+
+    if(index < 0){
+        index = thumbs.length - 1;
+    }
+
+    if(index >= thumbs.length){
+        index = 0;
+    }
+
+    currentIndex = index;
+
+    thumbs.forEach(img=>img.classList.remove("active"));
+    thumbs[currentIndex].classList.add("active");
+
+    mainImg.src = thumbs[currentIndex].src;
 }
+
+// 點縮圖
+thumbs.forEach((img,index)=>{
+    img.onclick=()=>{
+        showImage(index);
+    };
+});
+
+// 點主圖左半上一張、右半下一張
+mainImg.onclick=(e)=>{
+
+    const rect = mainImg.getBoundingClientRect();
+
+    if(e.clientX < rect.left + rect.width/2){
+        showImage(currentIndex-1);
+    }else{
+        showImage(currentIndex+1);
+    }
+
+};
+
+// 手機左右滑動
+let startX=0;
+
+mainImg.addEventListener("touchstart",(e)=>{
+    startX=e.touches[0].clientX;
+});
+
+mainImg.addEventListener("touchend",(e)=>{
+
+    let endX=e.changedTouches[0].clientX;
+    let diff=endX-startX;
+
+    if(Math.abs(diff)<40) return;
+
+    if(diff>0){
+        showImage(currentIndex-1);
+    }else{
+        showImage(currentIndex+1);
+    }
+
+});
+
+// 初始化
+showImage(0);
 
 const fl = document.getElementById('float');
 const tg = document.getElementById('toggle');
